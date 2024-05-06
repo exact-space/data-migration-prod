@@ -46,10 +46,10 @@ url = "https://data.exactspace.co/exactapi/units"
 res = requests.get(url)
 body = json.loads(res.content)
 
-body = [{"id":"6581818964ee3f0007e6c471"}]
-fileName = "sandbox.json"
+body = [{"id":"628dd242c78e4c5d0f3b90cf"},{"id":"635219343e4a8c0006f29888"}]
+fileName = "sandbox2.json"
 print(fileName)
-createConfig(fileName,body,"id")
+# createConfig(fileName,body,"id")
 
 for j in body:
     i = j["id"]
