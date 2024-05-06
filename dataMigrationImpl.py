@@ -17,22 +17,27 @@ import inspect
 import sys
 import gzip
 import platform
-version = platform.python_version().split(".")[0]
-if version == "3":
-    import app_config.app_config as cfg
-elif version == "2":
-    import app_config as cfg
-config = cfg.getconfig()
+try:
+    version = platform.python_version().split(".")[0]
+    if version == "3":
+        import app_config.app_config as cfg
+    elif version == "2":
+        import app_config as cfg
+    config = cfg.getconfig()
+except:
 
+    config = {"api":{"meta":"http://52.226.194.7/exactapi","datapoints":"http://52.226.194.7:8080/api/v1/datapoints","query":"http://52.226.194.7:8080/api/v1/datapoints/query","model":"http://52.226.194.7/model/","prediction":"http://52.226.194.7/prediction","fcm_send":"https://fcm.googleapis.com/fcm/send","efficiency":"http://52.226.194.7/efficiency/","service":"http://52.226.194.7/service","public_datacenter_url":"http://qa.exactspace.co/","batchefficiency":"http://52.226.194.7/batchefficiency/"},"telegram":{"token":""},"email":{"AWS_ACCESS_KEY":"","AWS_SECRET_KEY":""},"smtp":{},"timeZone":5.5,"loadBucketSize":5,"loadTagLimit":30,"modelBucketSize":"50","unitsId":"65cb7436d91f1f00074fe652","id":"65cb7436d91f1f00074fe652","spaceId":"prod","BROKER_ADDRESS":"52.226.194.7","siteId":"65cb73af4332650007ccd763","customerId":"65cb727cbaa64800073c1070","BROKER_PASSWORD":"iota#re-mqtt39","BROKER_USERNAME":"ES-MQTT","LS_PREFIX":"qa","launch":{}} 
+    config = {"api":{"meta":"http://13.68.199.3/exactapi","datapoints":"http://13.68.199.3:8080/api/v1/datapoints","query":"http://13.68.199.3:8080/api/v1/datapoints/query","model":"http://13.68.199.3/model/","prediction":"http://13.68.199.3/prediction","fcm_send":"https://fcm.googleapis.com/fcm/send","efficiency":"http://13.68.199.3/efficiency/","service":"http://13.68.199.3/service","public_datacenter_url":"http://sandbox.exactspace.co/","batchefficiency":"http://13.68.199.3/batchefficiency/"},"telegram":{"token":""},"email":{"AWS_ACCESS_KEY":"","AWS_SECRET_KEY":""},"smtp":{},"timeZone":5.5,"loadBucketSize":5,"loadTagLimit":30,"modelBucketSize":"50","unitsId":"65cf3bf83fec960007eb619f","id":"65cf41817067030007e81f66","spaceId":"prod","BROKER_ADDRESS":"13.68.199.3","siteId":"65cf3bf33fec960007eb619d","customerId":"65cf3be73fec960007eb619c","BROKER_PASSWORD":"iota#re-mqtt39","BROKER_USERNAME":"ES-MQTT","LS_PREFIX":"sandbox","launch":{}}
+    config = {"api":{"meta":"http://10.1.0.10/exactapi","datapoints":"http://10.224.0.11:8080/api/v1/datapoints","query":"http://10.1.0.10:8080/api/v1/datapoints/query","model":"http://10.1.0.10/model/","prediction":"http://10.1.0.10/prediction","fcm_send":"https://fcm.googleapis.com/fcm/send","efficiency":"http://10.1.0.10/efficiency/","service":"http://10.1.0.10/service","public_datacenter_url":"https://data.exactspace.co/","batchefficiency":"http://10.1.0.10/batchefficiency/"},"telegram":{"exop":{"chat-id":-338678250},"exgp":{"chat-id":-258556807},"dev":{"chat-id":570011002},"h_renu_u5":{"chat-id":-338678250},"token":"653055207:AAGqtEOTIhc8ndVb13eEA3bMJivVwfKoqqo"},"email":{"AWS_ACCESS_KEY":"","AWS_SECRET_KEY":""},"smtp":{},"timeZone":5.5,"loadBucketSize":10,"loadTagLimit":50,"modelBucketSize":"70","unitsId":"5c4ed3f5fe02914642b4d5bc","id":"5f0509402014f055dfd90c2e","spaceId":"prod","BROKER_ADDRESS":"10.1.0.10","FCM_SERVER_KEY":"AAAAbLfsn9k:APA91bGqVp-WKaZyt1fkzDpQmcvZQh7SCMrNgqjtjIC3LvV4lr5NMIpGi36lVm3-og9QZbOpgOvTS2rUleVKroZmlKo2uWU3BAinZ0vGrYDdHmzv_LfGrmD1CVyqtecUHO-zS5UEr6pb","service_ports":{"tasks":65535,"profiles":65534,"rotary-assets-pm":10193,"rotary-assets-runcycles":10177,"rotary-assets-condition":10388,"rotary-assets-overview":10679},"activity_types":["task","generic","chat"],"activity_types_debug":["task","generic","chat","task_debug","generic_debug","chat_debug"],"BROKER_PASSWORD":"iota#re-mqtt39","BROKER_USERNAME":"ES-MQTT","LS_PREFIX":"prod","prodAppstoreUrl":"https://apps.apple.com/app/pulse-data/id1673266794","prodPlaystoreUrl":"https://play.google.com/store/apps/details?id=com.pulsedata","appstoreUrl":"https://apps.apple.com/app/pulse-data/id1673266794","playstoreUrl":"https://play.google.com/store/apps/details?id=com.pulsedata","launch":{}}
+
+
+    
 preProdconfig = {"api":{"meta":"http://52.226.194.7/exactapi","datapoints":"http://52.226.194.7:8080/api/v1/datapoints","query":"http://52.226.194.7:8080/api/v1/datapoints/query","model":"http://52.226.194.7/model/","prediction":"http://52.226.194.7/prediction","fcm_send":"https://fcm.googleapis.com/fcm/send","efficiency":"http://52.226.194.7/efficiency/","service":"http://52.226.194.7/service","public_datacenter_url":"http://qa.exactspace.co/","batchefficiency":"http://52.226.194.7/batchefficiency/"},"telegram":{"token":""},"email":{"AWS_ACCESS_KEY":"","AWS_SECRET_KEY":""},"smtp":{},"timeZone":5.5,"loadBucketSize":5,"loadTagLimit":30,"modelBucketSize":"50","unitsId":"65cb7436d91f1f00074fe652","id":"65cb7436d91f1f00074fe652","spaceId":"prod","BROKER_ADDRESS":"52.226.194.7","siteId":"65cb73af4332650007ccd763","customerId":"65cb727cbaa64800073c1070","BROKER_PASSWORD":"iota#re-mqtt39","BROKER_USERNAME":"ES-MQTT","LS_PREFIX":"qa","launch":{}}
 preProdconfig = {"api":{"meta":"http://13.68.199.3/exactapi","datapoints":"http://13.68.199.3:8080/api/v1/datapoints","query":"http://13.68.199.3:8080/api/v1/datapoints/query","model":"http://13.68.199.3/model/","prediction":"http://13.68.199.3/prediction","fcm_send":"https://fcm.googleapis.com/fcm/send","efficiency":"http://13.68.199.3/efficiency/","service":"http://13.68.199.3/service","public_datacenter_url":"http://sandbox.exactspace.co/","batchefficiency":"http://13.68.199.3/batchefficiency/"},"telegram":{"token":""},"email":{"AWS_ACCESS_KEY":"","AWS_SECRET_KEY":""},"smtp":{},"timeZone":5.5,"loadBucketSize":5,"loadTagLimit":30,"modelBucketSize":"50","unitsId":"65cf3bf83fec960007eb619f","id":"65cf41817067030007e81f66","spaceId":"prod","BROKER_ADDRESS":"13.68.199.3","siteId":"65cf3bf33fec960007eb619d","customerId":"65cf3be73fec960007eb619c","BROKER_PASSWORD":"iota#re-mqtt39","BROKER_USERNAME":"ES-MQTT","LS_PREFIX":"sandbox","launch":{}}
-    #"query": 'https://devedgelive.thermaxglobal.com/kairosapi/api/v1/datapoints/query',
 
 def tr():
     print(traceback.format_exc())
 
-# originMeta = 'https://edgelive.thermaxglobal.com/exactapi'
-# originKairos  = 'https://edgelive.thermaxglobal.com/kairosapi/api/v1/datapoints/query'
 
 def modeloutputtag():
     url = "https://data.exactspace.co/exactapi/units/6581818964ee3f0007e6c471/modelpipelines?filter={%22fields%22:[%22outputTag%22]}"
@@ -272,7 +277,7 @@ class dataMiragtion():
             for dataTagId in df.columns:
                 if dataTagId != "time":
                     postUrl = preProdconfig["api"]["datapoints"]
-                    reqDataPoints = 5000
+                    reqDataPoints = 2500
                     print(f"len of df {len(df)}")
                     for i in range(0,len(df),reqDataPoints):
                         
@@ -389,45 +394,45 @@ class dataMiragtion():
 
     def postDataDefaultTags(self,remainingTags,numTag,iniTL,currentTimeStamp,client):
         for i in range(0, len(remainingTags) ,numTag):
-                        tagList = list(remainingTags[i:numTag+i])
-                        start = 1691346600000
-                        end = 1693420200000
-                        st = random.randint(start, end)
-                        et = st + 1*1000*60*10
-                        df = self.getValuesProd(tagList,st,et)
-                        
-                        df.fillna(method="bfill",inplace=True)
-                        df.fillna(method="ffill",inplace=True)
-                        # print(df)
+            tagList = list(remainingTags[i:numTag+i])
+            start = 1691346600000
+            end = 1693420200000
+            st = random.randint(start, end)
+            et = st + 1*1000*60*10
+            df = self.getValuesProd(tagList,st,et)
+            
+            df.fillna(method="bfill",inplace=True)
+            df.fillna(method="ffill",inplace=True)
+            # print(df)
 
-                        for tag in tagList:
-                            topicLine = iniTL + f"{tag}/r"
-                            topicLine2 = "u/6581818964ee3f0007e6c471/" + f"{tag}/r"
-                            try:
-                                v = float(df.loc[0,tag])
-                                ### TESTING ONLY ONGC -- Scaling DATA for certain tags
-                                # if tag in modetags:
-                                #     v = v*1.1
-                                ######################################################
-                                if not pd.isnull(v):
-                                    postBody = {
-                                        "v" : v,
-                                        "t" : currentTimeStamp
-                                    }
+            for tag in tagList:
+                topicLine = iniTL + f"{tag}/r"
+                topicLine2 = "u/6581818964ee3f0007e6c471/" + f"{tag}/r"
+                try:
+                    v = float(df.loc[0,tag])
+                    ### TESTING ONLY ONGC -- Scaling DATA for certain tags
+                    # if tag in modetags:
+                    #     v = v*1.1
+                    ######################################################
+                    if not pd.isnull(v):
+                        postBody = {
+                            "v" : v,
+                            "t" : currentTimeStamp
+                        }
 
-                                    print(postBody)
-                                    client.publish(topicLine,json.dumps([postBody]))
-                                    client.publish(topicLine2,json.dumps([postBody]))
+                        print(postBody)
+                        client.publish(topicLine,json.dumps([postBody]))
+                        client.publish(topicLine2,json.dumps([postBody]))
 
-                                    topicForwarded = "kairoswriteexternal"
-                                    postbody = [{"name":tag,"datapoints":[[postBody["t"], postBody["v"]]],"tags":{"type":"raw"}}]
-                                    print (postbody)
+                        topicForwarded = "kairoswriteexternal"
+                        postbody = [{"name":tag,"datapoints":[[postBody["t"], postBody["v"]]],"tags":{"type":"raw"}}]
+                        print(postbody)
 
-                                    client.publish(topicForwarded, json.dumps(postbody))
-                                else:
-                                    pass
-                            except:
-                                pass
+                        client.publish(topicForwarded, json.dumps(postbody))
+                    else:
+                        pass
+                except:
+                    pass
 
 
 
@@ -443,7 +448,10 @@ class dataMiragtion():
             currentMinute =  currentTime.minute
             currentSecond = currentTime.second
             last5Minute = abs(currentMinute  - 2)
-            validMonth = x[currentMonth - currentQuarter*4 + 3]
+            # validMonth = x[currentMonth - currentQuarter*4 + 3]
+            validMonth = 8
+            # if validMonth == 9 and currentDay > 15:
+            #     validMonth = 10
 
             startDate = "2023/{}/{} {}:{}:{}".format(validMonth,currentDay,currentHour,last5Minute,currentSecond)
             endDate = "2023/{}/{} {}:{}:{}".format(validMonth,currentDay,currentHour,currentMinute,currentSecond)
@@ -517,6 +525,7 @@ class dataMiragtion():
                         # print("exception error--", e)
                         print("appending tag",tag)
                         remainingTags.append(tag)
+
             print("len of faulty tags", len(remainingTags))
             self.postDataDefaultTags(remainingTags,numTag,iniTL,currentTimeStamp,client)
 
@@ -556,6 +565,7 @@ class dataMiragtion():
                 
             et = time.time() * 1000
             st = et - 1*1000*60*60*24*365*5
+            st = 1710786600000
             
             
             
